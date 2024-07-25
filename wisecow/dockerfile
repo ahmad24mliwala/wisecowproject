@@ -1,0 +1,18 @@
+# Use an official base image for a minimal Linux distribution
+FROM alpine:latest
+
+# Set working directory
+WORKDIR /app
+
+# Copy the application script into the container
+COPY wisecow.sh .
+
+# Install any dependencies (example: bash and curl)
+RUN apk add --no-cache bash curl
+
+# Ensure the script has execution permissions
+RUN chmod +x wisecow.sh
+
+# Set the entrypoint to execute the script
+ENTRYPOINT ["./wisecow.sh"]
+
